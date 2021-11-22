@@ -1,5 +1,6 @@
 import ButtonFooter from "./ButtonFooter";
 import { useState } from "react"
+import Expense from './Expense';
 
 
 function CreateBudget() {
@@ -11,27 +12,18 @@ function CreateBudget() {
   }
 
     return (
-			<div>
-				<form>
-					<input
-						onChange={handleChange}
-						type='number'
-						placeholder='enter monthly income'
-					/>
-					<input
-						onChange={handleChange}
-						type='text'
-						placeholder='enter an expense'
-					/>
-					<input
-						onChange={handleChange}
-						type='number'
-						placeholder='enter the amount'
-					/>
-					<ButtonFooter />
-				</form>
-			</div>
-		);
+        <div>
+            <form>
+                <input
+                    onChange={handleChange}
+                    type='number'
+                    placeholder='enter monthly income'
+                />
+                <Expense />
+                <ButtonFooter />
+            </form>
+        </div>
+    );
   }
   
   export default CreateBudget;
