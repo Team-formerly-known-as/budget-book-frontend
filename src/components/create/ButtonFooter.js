@@ -1,7 +1,7 @@
 function ButtonFooter() {
     return (
       <div>
-        <button>Add Expense</button>
+        <button >Add Expense</button>
         <button>Submit</button>
       </div>
     );
