@@ -1,37 +1,27 @@
-import ButtonFooter from "./ButtonFooter";
-import { useState } from "react"
-
+import ButtonFooter from './ButtonFooter';
+// import { useState } from 'react';
+import Expense from './Expense';
 
 function CreateBudget() {
+	// const [income, setIncome] = useState();
 
-  const [income, setIncome] = useState()
+	const handleChange = (e) => {
+		console.log(e.target.value);
+	};
 
-  const handleChange = (e) => {
-    console.log(e.target.value)
-  }
+	return (
+		<div>
+			<form>
+				<input
+					onChange={handleChange}
+					type='number'
+					placeholder='enter monthly income'
+				/>
+				<Expense />
+				<ButtonFooter />
+			</form>
+		</div>
+	);
+}
 
-    return (
-			<div>
-				<form>
-					<input
-						onChange={handleChange}
-						type='number'
-						placeholder='enter monthly income'
-					/>
-					<input
-						onChange={handleChange}
-						type='text'
-						placeholder='enter an expense'
-					/>
-					<input
-						onChange={handleChange}
-						type='number'
-						placeholder='enter the amount'
-					/>
-					<ButtonFooter />
-				</form>
-			</div>
-		);
-  }
-  
-  export default CreateBudget;
+export default CreateBudget;
