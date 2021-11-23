@@ -35,9 +35,12 @@ function Intro(props) {
 
         <input onChange={handleChange} type="text" name="userName" value={props.user.userName} placeholder="enter username" />
 
+        <input type="text" placeholder="enter username" />
         <Link to="/create">
 
+
         <button onClick={handleSubmit} className="intro-button" >Create Budget</button>
+
 
         </Link>
 
