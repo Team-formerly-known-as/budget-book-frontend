@@ -2,40 +2,53 @@
 import { useState } from 'react'
 
 function Expense() {
-	const [expense, setExpense] = useState();
-	const [expenseList, setExpenseList] = useState([]);
+	const [expenseName, setExpenseName] = useState('')
+	const [expenseAmount, setExpenseAmount] = useState('')
 
-	// {item: '', amount: null}
 
-	function handleChange(event) {
-		const item = event.target.value;
-		setExpense(item)
-		console.log(expense)
+	function handleChangeItem(event) {
+		// const input = event.target.value;
+		// const name = event.target.name
+		// const copy = Object.assign({}, expense)
+		// copy[name] = input
+		// setExpense(copy)
+		// console.log(expense)
+
+		const input = event.target.value;
+		setExpenseName(input)
+		console.log(expenseName)
+	}
+
+	function handleChangeAmount (event) {
+		const input = event.target.value;
+		setExpenseAmount(input)
+		console.log(expenseAmount)
 	}
 	  
 	function handleSubmit (event) {
 		event.preventDefault()
-		setExpenseList([...expenseList, expense])
-		console.log(expenseList)
-		// item + value becomes a line item on the screen
-		// and then a new expense field is appears beneath that
+		// post('route for backend', {name: expenseName, amount: expenseAmount})
+
+		console.log(expenseName)
 	}
 
     return (
 		<div>
-			<form onSubmit={handleSubmit}>
+			
 				<input
-					onChange={handleChange}
+					onChange={handleChangeItem}
 					type='text'
 					placeholder='enter an expense'
+					value = {expenseName}
 				/>
 				<input
-					onChange={handleChange}
+					onChange={handleChangeAmount}
 					type='number'
 					placeholder='enter the amount'
+					value = {expenseAmount}
 				/>
 				<button onClick={handleSubmit} type="submit">Add Expense</button>
-			</form>
+			
 		</div>
 	);											
 }
