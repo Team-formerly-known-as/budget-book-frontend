@@ -1,9 +1,11 @@
-
+import { Link } from 'react-router-dom'
 
 function Header() {
   return (
     <div>
-      <h1>Budget Book</h1>
+      <Link to='/'>
+        <h1>Budget Book</h1>
+      </Link>
     </div>
   );
 }

@@ -17,6 +17,8 @@ function Expense() {
 		event.preventDefault()
 		setExpenseList([...expenseList, expense])
 		console.log(expenseList)
+		// item + value becomes a line item on the screen
+		// and then a new expense field is appears beneath that
 	}
 
     return (
@@ -27,7 +29,12 @@ function Expense() {
 					type='text'
 					placeholder='enter an expense'
 				/>
-				<button onClick={handleSubmit} type="submit">Submit</button>
+				<input
+					onChange={handleChange}
+					type='number'
+					placeholder='enter the amount'
+				/>
+				<button onClick={handleSubmit} type="submit">Add Expense</button>
 			</form>
 		</div>
 	);											
