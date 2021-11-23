@@ -13,6 +13,7 @@ function Intro(props) {
     }
 
   	const handleSubmit = (event) => {
+      event.preventDefault()
 			fetch('http://localhost:4000/user', {
 				method: 'POST',
 				headers: {

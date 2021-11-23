@@ -15,11 +15,14 @@ function App() {
 		expenses: [],
 	});
 
-
-
+  let name = ""
+  if (user.userName){
+     name = user.userName
+  }
   return (
     <div>
       <Header />
+      {name}
       <Routes>
         <Route path='/' element={<Intro user={user} setUser={setUser}/>} />
         <Route path='/create' element={<CreateBudget />}/>
