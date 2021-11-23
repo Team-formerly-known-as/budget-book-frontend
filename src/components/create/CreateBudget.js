@@ -1,6 +1,9 @@
-import ButtonFooter from './ButtonFooter';
-// import { useState } from 'react';
+
+import ButtonFooter from "./ButtonFooter";
+// import { useState } from "react"
 import Expense from './Expense';
+
+
 
 function CreateBudget() {
 	// const [income, setIncome] = useState();
@@ -24,4 +27,4 @@ function CreateBudget() {
 	);
 }
 
-export default CreateBudget;
+  export default CreateBudget;
