@@ -11,6 +11,7 @@ function CreateBudget() {
     console.log(e.target.value)
   }
 
+
     return (
         <div>
             <form>

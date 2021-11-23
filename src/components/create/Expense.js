@@ -1,33 +1,36 @@
-import handleChange from "./CreateBudget"
+// import handleChange from "./CreateBudget"
 import { useState } from 'react'
 
 function Expense() {
-	const [expenseList, setExpenseList] = useState([{ expense: "", amount: Number }]);
+	const [expense, setExpense] = useState();
+	const [expenseList, setExpenseList] = useState([]);
 
-	const handleInputChange = (e, index) => {
-		const { expense, value } = e.target;
-		const list = [...expenseList];
-		// list[index][expense] = value;
-		// setExpenseList(list)
-		// console.log(expenseList)
-	} 
+	// {item: '', amount: null}
+
+	function handleChange(event) {
+		const item = event.target.value;
+		setExpense(item)
+		console.log(expense)
+	}
+	  
+	function handleSubmit (event) {
+		event.preventDefault()
+		setExpenseList([...expenseList, expense])
+		console.log(expenseList)
+	}
 
     return (
 		<div>
-			<form>
+			<form onSubmit={handleSubmit}>
 				<input
-					onChange={handleInputChange}
+					onChange={handleChange}
 					type='text'
 					placeholder='enter an expense'
 				/>
-				<input
-					onChange={handleInputChange}
-					type='number'
-					placeholder='enter the amount'
-				/>
+				<button onClick={handleSubmit} type="submit">Submit</button>
 			</form>
 		</div>
-	);
+	);											
 }
 
 export default Expense;
