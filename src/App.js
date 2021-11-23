@@ -1,5 +1,4 @@
 import './App.css';
-import './Pretty/styles.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Routes, Route } from 'react-router-dom'
 import 'react-bootstrap';
@@ -8,12 +7,17 @@ import Intro from './components/Intro';
 import CreateBudget from './components/create/CreateBudget';
 
 
+
 function App() {
+
+
+
+
   return (
     <div>
       <Header />
       <Routes>
-        <Route path='/' element={<Intro />}/>
+        <Route path='/' element={<Intro />} />
         <Route path='/create' element={<CreateBudget />}/>
       </Routes>
     </div>
