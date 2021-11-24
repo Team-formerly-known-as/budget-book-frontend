@@ -5,6 +5,7 @@ function Intro(props) {
   const [userInput,setUserInput] = useState({
 		userName: '',
     income: 0,
+    remainder: 0,
     expenses: [],
 	});
 
