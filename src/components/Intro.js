@@ -1,27 +1,34 @@
 import { Link } from "react-router-dom";
-
+import { useState } from 'react';
 
 function Intro(props) {
+  const [userInput,setUserInput] = useState({
+		userName: '',
+    expenses: [],
+	});
 
 
     const handleChange = (e) => {
       const value = e.target.value;
       const name = e.target.name;
-      const copy = Object.assign({}, props.user);
+      const copy = Object.assign({}, userInput);
       copy[name] = value;
-      props.setUser(copy);
+
+      setUserInput(copy);
     }
 
   	const handleSubmit = (event) => {
+      console.log(userInput)
 			fetch('http://localhost:4000/user', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
 				},
-				body: JSON.stringify(props.user),
-			}).then(user => {
-        props.setUser(user)
-        console.log(props.user)
+				body: JSON.stringify(userInput),
+			}).then(res => res.json())
+        .then(user =>{
+        console.log(user.user)
+        props.setUser(user.user)
       })
       
       // console.log(user)
@@ -35,7 +42,7 @@ function Intro(props) {
 
         <form onSubmit={handleSubmit}>
 
-        <input onChange={handleChange} type="text" name="userName" value={props.user.userName} placeholder="enter username" />
+        <input onChange={handleChange} type="text" name="userName" value={userInput.userName} placeholder="enter username" />
 
         <input type="text" placeholder="enter income" />
 
