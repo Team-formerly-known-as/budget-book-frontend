@@ -26,7 +26,7 @@ function Expense(props) {
   function handleSubmit(event) {
     event.preventDefault();
 
-    fetch("http://localhost:4000/expense", {
+    fetch(`http://localhost:4000/expense/${props.user._id}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -34,33 +34,14 @@ function Expense(props) {
       body: JSON.stringify({
         detail: expenseName,
         amount: expenseAmount,
+        user:props.user._id
       }),
     })
       .then((res) => res.json())
-      .then((expense) => {
-        console.log("string", expense.expense);
-        setExpenseId(expense.expense._id);
-        // }).then(data =>{
-        console.log("expenseid", expense.expense._id);
-        console.log("userid", props.user._id);
-        fetch(
-          `http://localhost:4000/user/${expense.expense._id}/${props.user._id}`,
-
-          {
-            method: "PUT",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              userName: props.user.userName,
-              budget: expense.expense._id,
-            }),
-          }
-        ).then((res) =>  res.json())
 		.then((user) => console.log(user));
         //router.put('/:expenseId/:userId'
         // post('route for backend', {name: expenseName, amount: expenseAmount})
-      });
+      
   }
 
   return (
