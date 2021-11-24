@@ -5,7 +5,7 @@ import Expense from './Expense';
 
 
 
-function CreateBudget() {
+function CreateBudget(props) {
 	// const [income, setIncome] = useState();
 
 	const handleChange = (e) => {
@@ -14,15 +14,9 @@ function CreateBudget() {
 
 	return (
 		<div>
-			<form>
-				<input
-					onChange={handleChange}
-					type='number'
-					placeholder='enter monthly income'
-				/>
-				<Expense />
-				<ButtonFooter />
-			</form>
+			<h1> $Income </h1>
+			<Expense user={props.user} setUser={props.setUser} />
+			<ButtonFooter />
 		</div>
 	);
 }

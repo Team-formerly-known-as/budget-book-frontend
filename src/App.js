@@ -22,10 +22,9 @@ function App() {
   return (
     <div>
       <Header />
-      {name}
       <Routes>
         <Route path='/' element={<Intro user={user} setUser={setUser}/>} />
-        <Route path='/create' element={<CreateBudget />}/>
+        <Route path='/create' element={<CreateBudget user={user} setUser={setUser}/>}/>
       </Routes>
     </div>
   );

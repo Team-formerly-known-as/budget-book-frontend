@@ -13,7 +13,6 @@ function Intro(props) {
     }
 
   	const handleSubmit = (event) => {
-      event.preventDefault()
 			fetch('http://localhost:4000/user', {
 				method: 'POST',
 				headers: {
@@ -35,7 +34,8 @@ function Intro(props) {
 
         <input onChange={handleChange} type="text" name="userName" value={props.user.userName} placeholder="enter username" />
 
-        <input type="text" placeholder="enter username" />
+        <input type="text" placeholder="enter income" />
+
         <Link to="/create">
 
 

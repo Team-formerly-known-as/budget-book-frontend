@@ -1,7 +1,7 @@
 // import handleChange from "./CreateBudget"
 import { useState } from 'react'
 
-function Expense() {
+function Expense(props) {
 	const [expenseName, setExpenseName] = useState('')
 	const [expenseAmount, setExpenseAmount] = useState('')
 
@@ -26,15 +26,29 @@ function Expense() {
 	}
 	  
 	function handleSubmit (event) {
-		event.preventDefault()
+      event.preventDefault();
+	  fetch('http://localhost:4000/expense', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({
+				detail: expenseName,
+				amount: expenseAmount
+			}),
+		});
+
 		// post('route for backend', {name: expenseName, amount: expenseAmount})
 
 		console.log(expenseName)
 	}
 
+	
+
     return (
 		<div>
-			
+			<p> {props.user.userName} </p>
+
 				<input
 					onChange={handleChangeItem}
 					type='text'
