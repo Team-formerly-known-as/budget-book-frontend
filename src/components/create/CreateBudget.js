@@ -14,7 +14,7 @@ function CreateBudget(props) {
 
 	return (
 		<div>
-			<h1> $Income </h1>
+			<h1> $Income: {props.user.income} </h1>
 			<Expense user={props.user} setUser={props.setUser} />
 			<ButtonFooter />
 		</div>

@@ -4,7 +4,8 @@ import { useState } from "react";
 function Expense(props) {
   const [expenseName, setExpenseName] = useState("");
   const [expenseAmount, setExpenseAmount] = useState("");
-//   const [expenseId, setExpenseId] = useState(0);
+  const [expenseId, setExpenseId] = useState(0);
+  const [remainingBalance, setRemainingBalance] = useState(props.user.remainder);
 
   function handleChangeItem(event) {
     // const input = event.target.value;
@@ -23,6 +24,14 @@ function Expense(props) {
     setExpenseAmount(input);
   }
 
+  // const findRemainder = () => {
+  //   let income = props.user.income
+  //   for(let x = 0; x < props.user.expenses.length; x++){
+  //     income = income - props.user.expenses[x].amount
+  //   }
+  //   setRemainingBalance(income)
+  // }
+
   function handleSubmit(event) {
     event.preventDefault();
 
@@ -38,16 +47,37 @@ function Expense(props) {
       }),
     })
       .then((res) => res.json())
-		.then((user) => console.log(user));
+		.then((user) => props.setUser(user))
+    .then(user => {
+      setExpenseName('')
+      setExpenseAmount('')
+      // findRemainder();
+      // console.log(remainingBalance)
+    })
+
         //router.put('/:expenseId/:userId'
         // post('route for backend', {name: expenseName, amount: expenseAmount})
       
   }
 
+
+  
+
+  const expenseHtml = props.user.expenses.map(lineItem => {
+    return(
+      <p key={lineItem._id}>{lineItem.detail}: {lineItem.amount}</p>
+    )
+  })
+
+  console.log(props.user.remainder)
+  
+
+
   return (
     <div>
-      <p> {props.user.userName} </p>
-
+      <p>{props.user.userName}</p>
+      {expenseHtml}
+      <p>{props.user.remainder}</p>
       <input
         onChange={handleChangeItem}
         type="text"
