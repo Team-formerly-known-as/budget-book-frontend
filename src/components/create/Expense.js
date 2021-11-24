@@ -38,16 +38,24 @@ function Expense(props) {
       }),
     })
       .then((res) => res.json())
-		.then((user) => console.log(user));
+		.then((user) => props.setUser(user))
+    .then(console.log(props.user))
         //router.put('/:expenseId/:userId'
         // post('route for backend', {name: expenseName, amount: expenseAmount})
       
   }
+  
+
+  const expenseHtml = props.user.expenses.map(lineItem => {
+    return(
+      <p key={lineItem._id}>{lineItem.detail}: {lineItem.amount}</p>
+    )
+  })
 
   return (
     <div>
       <p> {props.user.userName} </p>
-
+      {expenseHtml}
       <input
         onChange={handleChangeItem}
         type="text"
