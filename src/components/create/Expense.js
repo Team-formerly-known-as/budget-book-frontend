@@ -5,7 +5,7 @@ function Expense(props) {
   const [expenseName, setExpenseName] = useState("");
   const [expenseAmount, setExpenseAmount] = useState("");
   const [expenseId, setExpenseId] = useState(0);
-  const [remainingBalance, setRemainingBalance] = useState(props.user.remainder);
+  // const [remainingBalance, setRemainingBalance] = useState(props.user.remainder);
 
   function handleChangeItem(event) {
     // const input = event.target.value;
