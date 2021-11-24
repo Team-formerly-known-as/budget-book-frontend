@@ -1,70 +1,70 @@
 // import handleChange from "./CreateBudget"
-import { useState } from 'react'
+import { useState } from "react";
 
 function Expense(props) {
-	const [expenseName, setExpenseName] = useState('')
-	const [expenseAmount, setExpenseAmount] = useState('')
+  const [expenseName, setExpenseName] = useState("");
+  const [expenseAmount, setExpenseAmount] = useState("");
+  const [expenseId, setExpenseId] = useState(0);
 
+  function handleChangeItem(event) {
+    // const input = event.target.value;
+    // const name = event.target.name
+    // const copy = Object.assign({}, expense)
+    // copy[name] = input
+    // setExpense(copy)
+    // console.log(expense)
 
-	function handleChangeItem(event) {
-		// const input = event.target.value;
-		// const name = event.target.name
-		// const copy = Object.assign({}, expense)
-		// copy[name] = input
-		// setExpense(copy)
-		// console.log(expense)
+    const input = event.target.value;
+    setExpenseName(input);
+  }
 
-		const input = event.target.value;
-		setExpenseName(input)
-		console.log(expenseName)
-	}
+  function handleChangeAmount(event) {
+    const input = event.target.value;
+    setExpenseAmount(input);
+  }
 
-	function handleChangeAmount (event) {
-		const input = event.target.value;
-		setExpenseAmount(input)
-		console.log(expenseAmount)
-	}
-	  
-	function handleSubmit (event) {
-      event.preventDefault();
-	  fetch('http://localhost:4000/expense', {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify({
-				detail: expenseName,
-				amount: expenseAmount
-			}),
-		});
+  function handleSubmit(event) {
+    event.preventDefault();
 
-		// post('route for backend', {name: expenseName, amount: expenseAmount})
+    fetch(`http://localhost:4000/expense/${props.user._id}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        detail: expenseName,
+        amount: expenseAmount,
+        user:props.user._id
+      }),
+    })
+      .then((res) => res.json())
+		.then((user) => console.log(user));
+        //router.put('/:expenseId/:userId'
+        // post('route for backend', {name: expenseName, amount: expenseAmount})
+      
+  }
 
-		console.log(expenseName)
-	}
+  return (
+    <div>
+      <p> {props.user.userName} </p>
 
-	
-
-    return (
-		<div>
-			<p> {props.user.userName} </p>
-
-				<input
-					onChange={handleChangeItem}
-					type='text'
-					placeholder='enter an expense'
-					value = {expenseName}
-				/>
-				<input
-					onChange={handleChangeAmount}
-					type='number'
-					placeholder='enter the amount'
-					value = {expenseAmount}
-				/>
-				<button onClick={handleSubmit} type="submit">Add Expense</button>
-			
-		</div>
-	);											
+      <input
+        onChange={handleChangeItem}
+        type="text"
+        placeholder="enter an expense"
+        value={expenseName}
+      />
+      <input
+        onChange={handleChangeAmount}
+        type="number"
+        placeholder="enter the amount"
+        value={expenseAmount}
+      />
+      <button onClick={handleSubmit} type="submit">
+        Add Expense
+      </button>
+    </div>
+  );
 }
 
 export default Expense;
