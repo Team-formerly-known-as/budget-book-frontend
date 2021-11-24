@@ -4,6 +4,8 @@ import { useState } from 'react';
 function Intro(props) {
   const [userInput,setUserInput] = useState({
 		userName: '',
+    income: 0,
+    remainder: 0,
     expenses: [],
 	});
 
@@ -18,7 +20,7 @@ function Intro(props) {
     }
 
   	const handleSubmit = (event) => {
-      console.log(userInput)
+      console.log(userInput.income)
 			fetch('http://localhost:4000/user', {
 				method: 'POST',
 				headers: {
@@ -44,7 +46,7 @@ function Intro(props) {
 
         <input onChange={handleChange} type="text" name="userName" value={userInput.userName} placeholder="enter username" />
 
-        <input type="text" placeholder="enter income" />
+        <input onChange={handleChange} type="number" name="income" placeholder="enter income" />
 
         <Link to="/create">
 
