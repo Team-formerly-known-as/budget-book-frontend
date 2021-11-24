@@ -1,9 +1,10 @@
 // import handleChange from "./CreateBudget"
 import { useState } from 'react'
-
+import axios from "axios"
 function Expense(props) {
 	const [expenseName, setExpenseName] = useState('')
 	const [expenseAmount, setExpenseAmount] = useState('')
+	const [expenseId,setExpenseId] = useState(0)
 
 
 	function handleChangeItem(event) {
@@ -16,17 +17,18 @@ function Expense(props) {
 
 		const input = event.target.value;
 		setExpenseName(input)
-		console.log(expenseName)
+		
 	}
 
 	function handleChangeAmount (event) {
 		const input = event.target.value;
 		setExpenseAmount(input)
-		console.log(expenseAmount)
+		
 	}
 	  
 	function handleSubmit (event) {
       event.preventDefault();
+	  
 	  fetch('http://localhost:4000/expense', {
 			method: 'POST',
 			headers: {
@@ -36,14 +38,27 @@ function Expense(props) {
 				detail: expenseName,
 				amount: expenseAmount
 			}),
-		});
-
+		}).then(res => res.json())
+		.then(expense => {
+			console.log("string",expense.expense)
+			setExpenseId(expense.expense._id)
+		// }).then(data =>{
+			console.log("expenseid", expense.expense._id)
+			console.log("userid",props.user._id)
+			axios.put(`http://localhost:4000/user/${expense.expense._id}/${props.user._id}`,{
+				userName:props.user.userName,
+				budget:expense.expense._id
+		})}
+		).then(res => {
+			console.log("result",res)
+			res.json()
+		})
+		.then(user => console.log(user))
+		//router.put('/:expenseId/:userId'
 		// post('route for backend', {name: expenseName, amount: expenseAmount})
 
-		console.log(expenseName)
+		
 	}
-
-	
 
     return (
 		<div>
