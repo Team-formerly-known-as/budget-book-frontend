@@ -5,6 +5,7 @@ function Expense(props) {
   const [expenseName, setExpenseName] = useState("");
   const [expenseAmount, setExpenseAmount] = useState("");
   const [expenseId, setExpenseId] = useState(0);
+  const [remainingBalance, setRemainingBalance] = useState(props.user.income);
 
   function handleChangeItem(event) {
     // const input = event.target.value;
@@ -21,6 +22,14 @@ function Expense(props) {
   function handleChangeAmount(event) {
     const input = event.target.value;
     setExpenseAmount(input);
+  }
+
+  const findRemainder = () => {
+    let income = props.user.income
+    for(let x = 0; x < props.user.expenses.length; x++){
+      income = income - props.user.expenses[x].amount
+    }
+    setRemainingBalance(income)
   }
 
   function handleSubmit(event) {
@@ -42,6 +51,8 @@ function Expense(props) {
     .then(user => {
       setExpenseName('')
       setExpenseAmount('')
+      findRemainder();
+      console.log(remainingBalance)
     })
 
         //router.put('/:expenseId/:userId'
@@ -56,10 +67,14 @@ function Expense(props) {
     )
   })
 
+  
+
+
   return (
     <div>
       <p>{props.user.userName}</p>
       {expenseHtml}
+      <p>{remainingBalance}</p>
       <input
         onChange={handleChangeItem}
         type="text"
