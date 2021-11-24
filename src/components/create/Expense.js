@@ -1,6 +1,6 @@
 // import handleChange from "./CreateBudget"
 import { useState } from "react";
-import axios from "axios";
+
 function Expense(props) {
   const [expenseName, setExpenseName] = useState("");
   const [expenseAmount, setExpenseAmount] = useState("");
