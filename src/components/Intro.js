@@ -19,7 +19,10 @@ function Intro(props) {
 					'Content-Type': 'application/json',
 				},
 				body: JSON.stringify(props.user),
-			})
+			}).then(user => {
+        props.setUser(user)
+        console.log(props.user)
+      })
       
       // console.log(user)
 		};
