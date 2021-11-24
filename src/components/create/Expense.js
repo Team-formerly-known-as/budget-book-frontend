@@ -65,7 +65,7 @@ function Expense(props) {
 
   const expenseHtml = props.user.expenses.map(lineItem => {
     return(
-      <p key={lineItem._id}>{lineItem.detail}: {lineItem.amount}</p>
+      <p className="itemExpense" key={lineItem._id}>{lineItem.detail}: {lineItem.amount}</p>
     )
   })
 
@@ -74,27 +74,29 @@ function Expense(props) {
 
 
   return (
-    <div>
-      <p>{props.user.userName}</p>
-      {expenseHtml}
-      <p>{props.user.remainder}</p>
-      <input
-        onChange={handleChangeItem}
-        type="text"
-        placeholder="enter an expense"
-        value={expenseName}
-      />
-      <input
-        onChange={handleChangeAmount}
-        type="number"
-        placeholder="enter the amount"
-        value={expenseAmount}
-      />
-      <button onClick={handleSubmit} type="submit">
-        Add Expense
-      </button>
-    </div>
-  );
+		<div className="expense-box">
+			<p className='userName'>{props.user.userName}</p>
+			{expenseHtml}
+			<p className='balRemainder'>{props.user.remainder}</p>
+			<input
+				className='userExpense'
+				onChange={handleChangeItem}
+				type='text'
+				placeholder='enter an expense'
+				value={expenseName}
+			/>
+			<input
+				className='userExpense'
+				onChange={handleChangeAmount}
+				type='number'
+				placeholder='enter the amount'
+				value={expenseAmount}
+			/>
+			<button className='primaryButton' onClick={handleSubmit} type='submit'>
+				Add Expense
+			</button>
+		</div>
+	);
 }
 
 export default Expense;

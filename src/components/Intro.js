@@ -39,19 +39,19 @@ function Intro(props) {
 
     return (
       <div className="intro-box" >
-        <h2 className="intro-header" >welcome to budgetbook...</h2>
+        <h2 className="intro-header" >welcome to budgetbook</h2>
         <p className="intro-text" >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sed est feugiat sem dignissim faucibus a sed felis. Suspendisse a lacus ornare, fringilla dui posuere, aliquet nisi. </p>
 
         <form onSubmit={handleSubmit}>
 
-        <input onChange={handleChange} type="text" name="userName" value={userInput.userName} placeholder="enter username" />
+        <input className="userInput" onChange={handleChange} type="text" name="userName" value={userInput.userName} placeholder="enter username" />
 
-        <input onChange={handleChange} type="number" name="income" placeholder="enter income" />
+        <input className="userInput" onChange={handleChange} type="number" name="income" placeholder="enter income" />
 
         <Link to="/create">
 
 
-        <button onClick={handleSubmit} className="intro-button" >Create Budget</button>
+        <button className="primaryButton" onClick={handleSubmit} >Create Budget</button>
 
 
         </Link>
