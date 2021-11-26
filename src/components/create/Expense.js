@@ -60,11 +60,11 @@ function Expense(props) {
       
   }
 
-  function handleDelete (deletedId) {
-    fetch(`http://localhost:4000/expense/${deletedId}`, {
+  async function handleDelete (deletedId) {
+    await fetch(`http://localhost:4000/expense/${deletedId}`, {
       method: "DELETE",
     })
-    .then(fetch(`http://localhost:4000/user/${props.user._id}`))
+    .then(await fetch(`http://localhost:4000/user/${props.user._id}`))
     console.log(props.user._id)
     // .then(res => res.json())
     // .then(user => props.setUser(user))
