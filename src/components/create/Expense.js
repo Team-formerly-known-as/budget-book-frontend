@@ -60,12 +60,22 @@ function Expense(props) {
       
   }
 
-
+  function handleDelete (deletedId) {
+    fetch(`http://localhost:4000/expense/${deletedId}`, {
+      method: "DELETE"
+    }).then(fetch(`http://localhost:4000/user/${props.user._id}`,))
+    .then(res => res.json)
+    .then(res => console.log(res))
+  }
   
 
   const expenseHtml = props.user.expenses.map(lineItem => {
     return(
-      <p className="itemExpense" key={lineItem._id}>{lineItem.detail}: ${lineItem.amount}</p>
+      <div>
+        <p className="itemExpense" key={lineItem._id}>{lineItem.detail}: ${lineItem.amount}</p>
+        <button>Edit</button>
+        <button onClick={() => {handleDelete(lineItem._id)}}>Delete</button>
+      </div>
     )
   })
 
