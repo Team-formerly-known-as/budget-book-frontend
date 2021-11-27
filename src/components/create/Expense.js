@@ -67,7 +67,6 @@ function Expense(props) {
     })
     .then(res => res.json())
     .then(data => props.setUser(data.user))
-
   }
 
   // sets the states of the item info to be updated
@@ -77,11 +76,11 @@ function Expense(props) {
     setExpenseId(id._id)
   }
 
-  // handleUpdate takes the states and updates the item object with them, then calls handleSubmit
+  // handleUpdate takes the states and updates the item object with them, then calls a function which calls api for updated item
   function handleUpdate () {
 
     let item = {expenseName, expenseAmount}
-    // console.log(item)
+    console.log(item)
     
     fetch(`http://localhost:4000/expense/${expenseId}`, {
       method: "PUT",
@@ -90,8 +89,12 @@ function Expense(props) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(item)
-    }).then(console.log(item))
+    }).then((res) => {
+      res.json()
+      .then((res) => {
 
+      })
+    })
   }
   
 
