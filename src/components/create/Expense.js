@@ -58,20 +58,27 @@ function Expense(props) {
     setExpenseAmount(id.amount)
     setExpenseId(id._id)
   }
-    
-  const getUpdate =() =>{
-    fetch(`http://localhost:4000/user/${props.user._id}`).then(res => res.json()).then(res =>{
-      props.setUser(res.user)
-    }).then(console.log(props.user))
+ 
+   async function getUpdate (){
+    await fetch(`http://localhost:4000/user/${props.user._id}`).then((res) => {
+      res.json().then((res) => {
+        props.setUser(res)
+      })
+    })
+    // .then(res => res.json()).then(res =>{
+    //   props.setUser(res.user)
+    // }).then(console.log(props.user))
+    // console.log(props.user)
   }
 
   // handleUpdate takes the states and updates the item object with them, then calls a function which calls api for updated item
-  function handleUpdate () {
+  // Fetch request is wrong should be user/expenseId/userId Look at our UserController PUT route!!
+  async function handleUpdate () {
 
     let item = {expenseName, expenseAmount}
     console.log(item)
     
-    fetch(`http://localhost:4000/expense/${expenseId}`, {
+  await fetch(`http://localhost:4000/expense/${expenseId}`, {
       method: "PUT",
       headers: {
         'Accept':'application/json',
@@ -82,13 +89,14 @@ function Expense(props) {
       res.json()
       .then((res) =>  {
         console.log(res)
-        getUpdate()
+        getUpdate(item)
       })
     })
   }
-  let expenseHtml =""
-if(props.user && props.user.userName){
-   expenseHtml = props.user.expenses.map(lineItem => {
+
+//   let expenseHtml =""
+// if(props.user && props.user.userName){
+   let expenseHtml = props.user.expenses.map(lineItem => {
     return(
       <div>
         <p className="itemExpense" key={lineItem._id}>{lineItem.detail}: ${lineItem.amount}</p>
@@ -97,7 +105,7 @@ if(props.user && props.user.userName){
       </div>
     )
   })
-}
+// }
   
   console.log(props.user)
 
