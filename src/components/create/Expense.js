@@ -92,7 +92,7 @@ function Expense(props) {
     }).then((res) => {
       res.json()
       .then((res) => {
-
+        // getUpdate()
       })
     })
   }
