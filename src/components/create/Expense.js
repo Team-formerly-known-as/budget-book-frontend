@@ -8,13 +8,6 @@ function Expense(props) {
   // const [remainingBalance, setRemainingBalance] = useState(props.user.remainder);
 
   function handleChangeItem(event) {
-    // const input = event.target.value;
-    // const name = event.target.name
-    // const copy = Object.assign({}, expense)
-    // copy[name] = input
-    // setExpense(copy)
-    // console.log(expense)
-
     const input = event.target.value;
     setExpenseName(input);
   }
@@ -23,14 +16,6 @@ function Expense(props) {
     const input = event.target.value;
     setExpenseAmount(input);
   }
-
-  // const findRemainder = () => {
-  //   let income = props.user.income
-  //   for(let x = 0; x < props.user.expenses.length; x++){
-  //     income = income - props.user.expenses[x].amount
-  //   }
-  //   setRemainingBalance(income)
-  // }
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -59,7 +44,6 @@ function Expense(props) {
         // post('route for backend', {name: expenseName, amount: expenseAmount})
       
   }
-
 
   function handleDelete (deletedId) {
     fetch(`http://localhost:4000/expense/${deletedId}/${props.user._id}`, {
