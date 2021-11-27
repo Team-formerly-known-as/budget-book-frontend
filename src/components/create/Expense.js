@@ -65,7 +65,7 @@ function Expense(props) {
 
   const expenseHtml = props.user.expenses.map(lineItem => {
     return(
-      <p className="itemExpense" key={lineItem._id}>{lineItem.detail}: ${lineItem.amount}</p>
+      <li className="item-expense" key={lineItem._id}><span className="list-item">{lineItem.detail}</span> <span className="list-amount">${lineItem.amount}</span></li>
     )
   })
 
@@ -74,29 +74,35 @@ function Expense(props) {
 
 
   return (
-		<div className="expense-box">
-			<p>Income: ${props.user.income} </p>
-			{expenseHtml}
-			<p className='balRemainder'> Remaining Balance: ${props.user.remainder}</p>
-      <div className="expense-input-box">
-        <input
-          className='userExpense'
-          onChange={handleChangeItem}
-          type='text'
-          placeholder='enter an expense'
-          value={expenseName}
-        />
-        <input
-          className='userAmount'
-          onChange={handleChangeAmount}
-          type='number'
-          placeholder='enter the amount'
-          value={expenseAmount}
-        />
-        <button className='primaryButton' onClick={handleSubmit} type='submit'>
-          Add Expense
-        </button>
+		<div className='expense-box'>
+			<div className='userInfo'>
+				<p className='userName'>User:{props.user.userName}</p>
+				<p className='income'>Income: ${props.user.income} </p>
+				<p className='balRemainder'>Balance:${props.user.remainder}</p>
+			</div>
+
+			<div className='expense-list'>{expenseHtml}
       </div>
+
+			<div className='expense-input-box'>
+				<input
+					className='userExpense'
+					onChange={handleChangeItem}
+					type='text'
+					placeholder='enter an expense'
+					value={expenseName}
+				/>
+				<input
+					className='userAmount'
+					onChange={handleChangeAmount}
+					type='number'
+					placeholder='enter the amount'
+					value={expenseAmount}
+				/>
+				<button className='primaryButton' onClick={handleSubmit} type='submit'>
+					Add Expense
+				</button>
+			</div>
 		</div>
 	);
 }

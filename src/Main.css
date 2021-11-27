@@ -65,7 +65,7 @@ font-family: 'Roboto Mono', monospace; */
 
 .expense-box {
     text-align: center;
-    
+
 }
 
 .expense-box  p{
@@ -85,3 +85,45 @@ font-family: 'Roboto Mono', monospace; */
     margin-top: 50px;
 }
 
+.userInfo {
+    display: inline-flex;
+    margin: 10px;
+    text-align: center;
+}
+
+.userName,
+.balRemainder,
+.income {
+    display: inline-block;
+    text-align: center;
+    padding: 5px;
+    font-size: 20px;
+}
+
+.expense-list {
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+    background-color: #91B2B6;
+
+
+}
+
+.item-expense {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    font-family: 'Noto Sans', sans-serif;
+    list-style: none;
+    padding: 20px;
+}
+
+.list-item {
+    grid-column: 1;
+    text-align: left;
+}
+
+.list-amount {
+    grid-column: 2;
+    text-align: right;
+
+}
