@@ -80,6 +80,30 @@ function Expense(props) {
       })
     })
   }
+
+  // sets the states of the item info to be updated
+  function setUpdate (id) {
+    setExpenseName(id.detail)
+    setExpenseAmount(id.amount)
+    setExpenseId(id._id)
+  }
+
+  // handleUpdate takes the states and updates the item object with them, then calls handleSubmit
+  function handleUpdate () {
+
+    let item = {expenseName, expenseAmount}
+    // console.log(item)
+    
+    fetch(`http://localhost:4000/expense/${expenseId}`, {
+      method: "PUT",
+      headers: {
+        'Accept':'application/json',
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(item)
+    }).then(console.log(item))
+
+  }
   
 
   const expenseHtml = props.user.expenses.map(lineItem => {
