@@ -60,12 +60,14 @@ function Expense(props) {
       
   }
 
+
   function handleDelete (deletedId) {
     fetch(`http://localhost:4000/expense/${deletedId}/${props.user._id}`, {
       method: "DELETE",
     })
     .then(res => res.json())
     .then(data => props.setUser(data.user))
+
   }
   
 
