@@ -1,5 +1,5 @@
 // import handleChange from "./CreateBudget"
-import { useState } from "react";
+import { useState,useEffect } from "react";
 
 function Expense(props) {
   const [expenseName, setExpenseName] = useState("");
@@ -36,8 +36,7 @@ function Expense(props) {
     .then(user => {
       setExpenseName('')
       setExpenseAmount('')
-      // findRemainder();
-      // console.log(remainingBalance)
+      
     })
 
         //router.put('/:expenseId/:userId'
@@ -59,6 +58,12 @@ function Expense(props) {
     setExpenseAmount(id.amount)
     setExpenseId(id._id)
   }
+    
+  const getUpdate =() =>{
+    fetch(`http://localhost:4000/user/${props.user._id}`).then(res => res.json()).then(res =>{
+      props.setUser(res.user)
+    }).then(console.log(props.user))
+  }
 
   // handleUpdate takes the states and updates the item object with them, then calls a function which calls api for updated item
   function handleUpdate () {
@@ -75,38 +80,15 @@ function Expense(props) {
       body: JSON.stringify(item)
     }).then((res) => {
       res.json()
-      .then((res) => {
-        // getUpdate()
+      .then((res) =>  {
+        console.log(res)
+        getUpdate()
       })
     })
   }
-
-  // sets the states of the item info to be updated
-  function setUpdate (id) {
-    setExpenseName(id.detail)
-    setExpenseAmount(id.amount)
-    setExpenseId(id._id)
-  }
-
-  // handleUpdate takes the states and updates the item object with them, then calls handleSubmit
-  function handleUpdate () {
-
-    let item = {expenseName, expenseAmount}
-    // console.log(item)
-    
-    fetch(`http://localhost:4000/expense/${expenseId}`, {
-      method: "PUT",
-      headers: {
-        'Accept':'application/json',
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(item)
-    }).then(console.log(item))
-
-  }
-  
-
-  const expenseHtml = props.user.expenses.map(lineItem => {
+  let expenseHtml =""
+if(props.user && props.user.userName){
+   expenseHtml = props.user.expenses.map(lineItem => {
     return(
       <div>
         <p className="itemExpense" key={lineItem._id}>{lineItem.detail}: ${lineItem.amount}</p>
@@ -115,7 +97,9 @@ function Expense(props) {
       </div>
     )
   })
-  // console.log(props.user)
+}
+  
+  console.log(props.user)
 
 
   return (
