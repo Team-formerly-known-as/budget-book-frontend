@@ -61,27 +61,39 @@ function Expense(props) {
   }
 
 
+  function handleDelete (deletedId) {
+    fetch(`http://localhost:4000/expense/${deletedId}/${props.user._id}`, {
+      method: "DELETE",
+    })
+    .then(res => res.json())
+    .then(data => props.setUser(data.user))
+
+  }
   
 
   const expenseHtml = props.user.expenses.map(lineItem => {
     return(
-      <li className="item-expense" key={lineItem._id}><span className="list-item">{lineItem.detail}</span> <span className="list-amount">${lineItem.amount}</span></li>
+      <div>
+        <p className="item-expense" key={lineItem._id}><span className="list-item">{lineItem.detail}</span> <span className="list-amount">${lineItem.amount}</span></p>
+        <button className="secondaryButton">Edit</button>
+        <button className="secondaryButton" onClick={() => {handleDelete(lineItem._id)}}>Delete</button>
+      </div>
     )
   })
-
-  console.log(props.user.remainder)
+  console.log(props.user)
   
 
 
   return (
 		<div className='expense-box'>
 			<div className='userInfo'>
-				<p className='userName'>User:{props.user.userName}</p>
-				<p className='income'>Income: ${props.user.income} </p>
-				<p className='balRemainder'>Balance:${props.user.remainder}</p>
+				<p className='userName'><span className='firstWord'> User </span><span className='secondWord'>{props.user.userName}</span></p>
+				<p className='income'><span className='firstWord'> Income </span><span className='secondWord'>${props.user.income}</span></p>
+				<p className='balRemainder'><span className='firstWord'> Balance </span><span className='secondWord'>${props.user.remainder}</span></p>
 			</div>
 
-			<div className='expense-list'>{expenseHtml}
+			<div className='expense-list-box'>
+        <p className='expense-list'>{expenseHtml}</p>
       </div>
 
 			<div className='expense-input-box'>
