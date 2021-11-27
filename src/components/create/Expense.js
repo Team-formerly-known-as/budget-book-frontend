@@ -69,27 +69,65 @@ function Expense(props) {
     .then(data => props.setUser(data.user))
 
   }
+
+  // sets the states of the item info to be updated
+  function setUpdate (id) {
+    setExpenseName(id.detail)
+    setExpenseAmount(id.amount)
+    setExpenseId(id._id)
+  }
+
+  // handleUpdate takes the states and updates the item object with them, then calls handleSubmit
+  function handleUpdate () {
+
+    let item = {expenseName, expenseAmount}
+    // console.log(item)
+    
+    fetch(`http://localhost:4000/expense/${expenseId}`, {
+      method: "PUT",
+      headers: {
+        'Accept':'application/json',
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(item)
+    }).then(console.log(item))
+
+  }
   
 
   const expenseHtml = props.user.expenses.map(lineItem => {
     return(
       <div>
         <p className="itemExpense" key={lineItem._id}>{lineItem.detail}: ${lineItem.amount}</p>
-        <button>Edit</button>
+        <button onClick={() => {setUpdate(lineItem)}}>Edit</button>
         <button onClick={() => {handleDelete(lineItem._id)}}>Delete</button>
       </div>
     )
   })
-  console.log(props.user)
-  
+  // console.log(props.user)
 
 
   return (
 		<div className="expense-box">
 			<p>Income: ${props.user.income} </p>
 			{expenseHtml}
-			<p className='balRemainder'> Remaining Balance: ${props.user.remainder}</p>
+      <p className='balRemainder'> Remaining Balance: ${props.user.remainder}</p>
+      <div id="edit-field">
+        <h2>Edit Field</h2>
+        <input 
+          value={expenseName} 
+          type="text"
+          onChange={handleChangeItem}
+        />
+        <input 
+          value={expenseAmount} 
+          type="number"
+          onChange={handleChangeAmount}
+        />
+        <button onClick={handleUpdate} type='submit'>Submit</button>
+      </div>
       <div className="expense-input-box">
+        <h2>Expense Input Box</h2>
         <input
           className='userExpense'
           onChange={handleChangeItem}
