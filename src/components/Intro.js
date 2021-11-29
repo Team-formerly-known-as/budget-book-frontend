@@ -21,7 +21,7 @@ function Intro(props) {
  
   const handleSubmit = (event) => {
     event.preventDefault()
-    fetch("http://localhost:4000/user", {
+    fetch("https://git.heroku.com/hidden-taiga-41169.git/user", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
