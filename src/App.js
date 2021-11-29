@@ -16,10 +16,7 @@ function App() {
 		expenses: [],
 	});
 
-  let name = ""
-  if (user.userName){
-     name = user.userName
-  }
+ 
   return (
     <div>
       <Header />
