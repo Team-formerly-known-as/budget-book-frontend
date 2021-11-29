@@ -1,60 +1,55 @@
-import { Link,Navigate } from "react-router-dom";
-import { useState } from "react";
-import { render } from "@testing-library/react";
-
+import { Link, Navigate } from 'react-router-dom'
+import { useState } from 'react'
+import { render } from '@testing-library/react'
 
 function Intro(props) {
   const [userInput, setUserInput] = useState({
-    userName: "",
+    userName: '',
     income: 0,
     remainder: 0,
     expenses: [],
-  });
+  })
 
   const handleChange = (e) => {
-    const value = e.target.value;
-    const name = e.target.name;
-    const copy = Object.assign({}, userInput);
-    copy[name] = value;
+    const value = e.target.value
+    const name = e.target.name
+    const copy = Object.assign({}, userInput)
+    copy[name] = value
 
-    setUserInput(copy);
-  };
- 
+    setUserInput(copy)
+  }
+
   const handleSubmit = (event) => {
     event.preventDefault()
-    fetch("https://hidden-taiga-41169.herokuapp.com/user", {
+    fetch('https://hidden-taiga-41169.herokuapp.com/user', {
       // fetch("https://localhost4000/user", {
-      method: "POST",
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify(userInput),
     })
-      .then((res) =>res.json())
+      .then((res) => res.json())
       .then((data) => {
-        if(data.user){
-          console.log(data.user);
-          props.setUser(data.user);
-        }
-        else{
-          
+        if (data.user) {
+          console.log(data.user)
+          props.setUser(data.user)
+        } else {
           alert(data.message)
         }
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err))
+  }
 
-    
-  };
-
-  return (
-    props.user && props.user.userName 
-    ? <Navigate to="/create" />
-    :<div className="intro-box">
+  return props.user && props.user.userName ? (
+    <Navigate to="/create" />
+  ) : (
+    <div className="intro-box">
       <h2 className="intro-header">welcome to budgetbook</h2>
       <p className="intro-text">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sed est
         feugiat sem dignissim faucibus a sed felis. Suspendisse a lacus ornare,
-        fringilla dui posuere, aliquet nisi.{" "}
+        fringilla dui posuere, aliquet nisi.{' '}
       </p>
 
       <form onSubmit={handleSubmit}>
@@ -82,7 +77,7 @@ function Intro(props) {
         </Link>
       </form>
     </div>
-  );
+  )
 }
 
-export default Intro;
+export default Intro
