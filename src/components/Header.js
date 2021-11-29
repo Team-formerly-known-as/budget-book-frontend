@@ -2,9 +2,9 @@ import { Link } from 'react-router-dom'
 
 function Header() {
   return (
-    <div>
-      <Link to='/'>
-        <h1>Budget Book</h1>
+    <div className="headBackground">
+      <Link className="headLink" to='/'>
+        <h1 className="constHeader" >budgetbook</h1>
       </Link>
     </div>
   );

@@ -1,4 +1,5 @@
 import './App.css';
+import './Main.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Routes, Route } from 'react-router-dom'
 import { useState } from 'react';
@@ -15,17 +16,13 @@ function App() {
 		expenses: [],
 	});
 
-  let name = ""
-  if (user.userName){
-     name = user.userName
-  }
+ 
   return (
     <div>
       <Header />
-      {name}
       <Routes>
         <Route path='/' element={<Intro user={user} setUser={setUser}/>} />
-        <Route path='/create' element={<CreateBudget />}/>
+        <Route path='/create' element={<CreateBudget user={user} setUser={setUser}/>}/>
       </Routes>
     </div>
   );

@@ -1,8 +1,11 @@
-import ButtonFooter from './ButtonFooter';
-// import { useState } from 'react';
+
+import ButtonFooter from "./ButtonFooter";
+// import { useState } from "react"
 import Expense from './Expense';
 
-function CreateBudget() {
+
+
+function CreateBudget(props) {
 	// const [income, setIncome] = useState();
 
 	const handleChange = (e) => {
@@ -10,18 +13,16 @@ function CreateBudget() {
 	};
 
 	return (
-		<div>
-			<form>
-				<input
-					onChange={handleChange}
-					type='number'
-					placeholder='enter monthly income'
-				/>
-				<Expense />
-				<ButtonFooter />
-			</form>
+		<div className='expense-box'>
+
+			<h2>Budget</h2>
+			<p className='userName'>User: {props.user.userName}</p>
+
+
+			<Expense user={props.user} setUser={props.setUser} />
+			<ButtonFooter />
 		</div>
 	);
 }
 
-export default CreateBudget;
+  export default CreateBudget;
