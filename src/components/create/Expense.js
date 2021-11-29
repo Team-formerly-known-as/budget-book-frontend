@@ -59,41 +59,60 @@ function Expense(props) {
     setExpenseId(id._id)
   }
  
-   async function getUpdate (){
-    await fetch(`http://localhost:4000/user/${props.user._id}`).then((res) => {
-      res.json().then((res) => {
-        props.setUser(res)
-      })
-    })
-    // .then(res => res.json()).then(res =>{
-    //   props.setUser(res.user)
-    // }).then(console.log(props.user))
-    // console.log(props.user)
-  }
+  //  async function getUpdate (){
+  //   await fetch(`http://localhost:4000/user/${props.user._id}`).then((res) => {
+  //     res.json().then((res) => {
+  //       props.setUser(res)
+  //     })
+  //   })
+  //   // .then(res => res.json()).then(res =>{
+  //   //   props.setUser(res.user)
+  //   // }).then(console.log(props.user))
+  //   // console.log(props.user)
+  // }
 
-  // handleUpdate takes the states and updates the item object with them, then calls a function which calls api for updated item
-  // Fetch request is wrong should be user/expenseId/userId Look at our UserController PUT route!!
-  async function handleUpdate () {
+  // // handleUpdate takes the states and updates the item object with them, then calls a function which calls api for updated item
+  // // Fetch request is wrong should be user/expenseId/userId Look at our UserController PUT route!!
+  // async function handleUpdate () {
 
-    let item = {expenseName, expenseAmount}
-    console.log(item)
+  //   let item = {expenseName, expenseAmount}
+  //   console.log(item)
     
-  await fetch(`http://localhost:4000/expense/${expenseId}`, {
+  // await fetch(`http://localhost:4000/expense/${expenseId}`, {
+  //     method: "PUT",
+  //     headers: {
+  //       'Accept':'application/json',
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify(item)
+  //   }).then((res) => {
+  //     res.json()
+  //     .then((res) =>  {
+  //       console.log(res)
+  //       getUpdate(item)
+  //     })
+  //   })
+  // }
+
+
+  function handleUpdate () {
+
+    // let item = {expenseName, expenseAmount}
+    // console.log(item)
+    
+  fetch(`http://localhost:4000/user/${expenseId}/${props.user._id}`, {
       method: "PUT",
       headers: {
         'Accept':'application/json',
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(item)
-    }).then((res) => {
-      res.json()
-      .then((res) =>  {
-        console.log(res)
-        getUpdate(item)
+      body: JSON.stringify({
+        detail:expenseName,
+        amount:expenseAmount
       })
-    })
+    }).then(res => res.json())
+    .then(data => props.setUser(data.user))
   }
-
 //   let expenseHtml =""
 // if(props.user && props.user.userName){
    let expenseHtml = props.user.expenses.map(lineItem => {
