@@ -14,8 +14,11 @@ function CreateBudget(props) {
 
 	return (
 		<div className='expense-box'>
+
 			<h2>Budget</h2>
 			<p className='userName'>User: {props.user.userName}</p>
+
+
 			<Expense user={props.user} setUser={props.setUser} />
 			<ButtonFooter />
 		</div>

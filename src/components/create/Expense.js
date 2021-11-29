@@ -121,6 +121,7 @@ function Expense(props) {
         <p className="itemExpense" key={lineItem._id}>{lineItem.detail}: ${lineItem.amount}</p>
         <button onClick={() => {setUpdate(lineItem)}}>Edit</button>
         <button onClick={() => {handleDelete(lineItem._id)}}>Delete</button>
+
       </div>
     )
   })
@@ -130,6 +131,7 @@ function Expense(props) {
 
 
   return (
+
 		<div className="expense-box">
 			<p>Income: ${props.user.income} </p>
 			{expenseHtml}
@@ -167,7 +169,28 @@ function Expense(props) {
         <button className='primaryButton' onClick={handleSubmit} type='submit'>
           Add Expense
         </button>
+
       </div>
+
+			<div className='expense-input-box'>
+				<input
+					className='userExpense'
+					onChange={handleChangeItem}
+					type='text'
+					placeholder='enter an expense'
+					value={expenseName}
+				/>
+				<input
+					className='userAmount'
+					onChange={handleChangeAmount}
+					type='number'
+					placeholder='enter the amount'
+					value={expenseAmount}
+				/>
+				<button className='primaryButton' onClick={handleSubmit} type='submit'>
+					Add Expense
+				</button>
+			</div>
 		</div>
 	);
 }
