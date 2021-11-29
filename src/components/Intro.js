@@ -2,6 +2,7 @@ import { Link,Navigate } from "react-router-dom";
 import { useState } from "react";
 import { render } from "@testing-library/react";
 
+
 function Intro(props) {
   const [userInput, setUserInput] = useState({
     userName: "",
@@ -21,7 +22,8 @@ function Intro(props) {
  
   const handleSubmit = (event) => {
     event.preventDefault()
-    fetch("https://git.heroku.com/hidden-taiga-41169.git/user", {
+    fetch("https://hidden-taiga-41169.herokuapp.com/user", {
+      // fetch("https://localhost4000/user", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
