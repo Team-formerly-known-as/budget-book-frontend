@@ -118,9 +118,9 @@ function Expense(props) {
    let expenseHtml = props.user.expenses.map(lineItem => {
     return(
       <div>
-        <p className="itemExpense" key={lineItem._id}>{lineItem.detail}: ${lineItem.amount}</p>
-        <button onClick={() => {setUpdate(lineItem)}}>Edit</button>
-        <button onClick={() => {handleDelete(lineItem._id)}}>Delete</button>
+        <p className="itemExpense" key={lineItem._id}><span className="list-item">{lineItem.detail}</span> <span className="list-amount">${lineItem.amount}</span></p>
+        <button className="secondaryButton" onClick={() => {setUpdate(lineItem)}}>Edit</button>
+        <button className="secondaryButton" onClick={() => {handleDelete(lineItem._id)}}>Delete</button>
 
       </div>
     )
@@ -137,7 +137,7 @@ function Expense(props) {
 			{expenseHtml}
       <p className='balRemainder'> Remaining Balance: ${props.user.remainder}</p>
       <div id="edit-field">
-        <h2>Edit Field</h2>
+        <h2 className="editTab">Edit</h2>
         <input 
           value={expenseName} 
           type="text"
@@ -148,10 +148,10 @@ function Expense(props) {
           type="number"
           onChange={handleChangeAmount}
         />
-        <button onClick={handleUpdate} type='submit'>Submit</button>
+        <button className="primaryButton" onClick={handleUpdate} type='submit'>Submit</button>
       </div>
       <div className="expense-input-box">
-        <h2>Expense Input Box</h2>
+        <h2 className="expenseAdd">Add Expense</h2>
         <input
           className='userExpense'
           onChange={handleChangeItem}
@@ -169,29 +169,8 @@ function Expense(props) {
         <button className='primaryButton' onClick={handleSubmit} type='submit'>
           Add Expense
         </button>
-
+        </div>
       </div>
-
-			<div className='expense-input-box'>
-				<input
-					className='userExpense'
-					onChange={handleChangeItem}
-					type='text'
-					placeholder='enter an expense'
-					value={expenseName}
-				/>
-				<input
-					className='userAmount'
-					onChange={handleChangeAmount}
-					type='number'
-					placeholder='enter the amount'
-					value={expenseAmount}
-				/>
-				<button className='primaryButton' onClick={handleSubmit} type='submit'>
-					Add Expense
-				</button>
-			</div>
-		</div>
 	);
 }
 

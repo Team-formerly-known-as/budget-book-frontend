@@ -139,7 +139,13 @@ font-family: 'Roboto Mono', monospace; */
 
 }
 
-.item-expense {
+.expenseAdd,
+.editTab {
+    font-family: 'Roboto Condensed', sans-serif;
+
+}
+
+.itemExpense {
     font-family: 'Montserrat', sans-serif;
     background-color: #91b2b677;
     border-radius: 30px;
@@ -164,4 +170,8 @@ font-family: 'Roboto Mono', monospace; */
     grid-column: 2;
     text-align: right;
 
+}
+
+.HUGE {
+    font-size: 100px;
 }
