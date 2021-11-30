@@ -19,9 +19,9 @@ function DropdownBar(props) {
   }
 
   return (
-    <div className="Wrapper">
-      <div className="title">
-        <select onChange={handleUserChange}>
+    <div className="drop-wrapper">
+      <div className="drop-title">
+        <select className="dropdown" onChange={handleUserChange}>
           <option value="select user"> -- Select User --</option>
           {props.selectUser.map((user) => (
             <option key={user._id} value={JSON.stringify(user)}>
