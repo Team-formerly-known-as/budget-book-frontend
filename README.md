@@ -1,70 +1,47 @@
-# Getting Started with Create React App
+# Budget Book
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The Budget Book app allows users to easily create a monthly budget to better manage their finances. Our group considered a number of other projects beforehand but settled on Budget Book for its broad applicability (ie. Everyone handles money, everyone needs to budget).
 
-## Available Scripts
+As a team we produced our User Stories, React Architecture, Wireframes, and Time/Priority Matrix. Initially, Larry and Edgar handled the backend while Jules and Damon built the front-end. About midway through the project the four of us reconvened to workout issues in both areas bringing the project to completion.
 
-In the project directory, you can run:
+## User Stories/React Architecture/Wireframes
 
-### `yarn start`
+Our users are people who want to have as much money left over at the end of the month as possible, allowing them to pursue and achieve their financial goals.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+[User Stories](https://imgur.com/a/5GzMfe6)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+[React Architecture](https://imgur.com/a/daGj45e)
 
-### `yarn test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `yarn build`
+### Wireframes
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+[Landing Page](https://res.cloudinary.com/deq09hmu3/image/upload/v1637361753/Portfolio/Project/Screen_Shot_2021-11-19_at_2.40.08_PM_j4oash.png)
+[Budget Form](https://res.cloudinary.com/deq09hmu3/image/upload/v1637361740/Portfolio/Project/Screen_Shot_2021-11-19_at_2.40.12_PM_tf4wu0.png)
+[Finished Budget](https://res.cloudinary.com/deq09hmu3/image/upload/v1637361755/Portfolio/Project/Screen_Shot_2021-11-19_at_2.40.16_PM_y3v3cs.png)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Time/Priority Matrix (UPDATE WHEN COMPLETE)
+| Component | Priority | Estimated Time | Actual Time |
+| --- | :---: |  :---: | :---: |
+| Backend initial set up | H | 1.5 | 1 |
+| Create Expense.js model | H | 1.5 | 0.5 |
+| Create User.js model | H | 1.5 | 0.5 |
+| Create database directory | H | 2 | 0.25 |
+| Create Controllers directory | H | 2 | 0.25 |
+| Design site | H | 3 | 3 |
+| React app set up | H | 1.5 | 0.5 |
+| Create form | H | 1.5 | 3 |
+| Create functionality (math) | H | 2.5 | 5 |
+| Delete expense functionality | H | 2 | 10 |
+| Edit expense functionality | H | 2 | 7.5 |
+| Delete Budget functionality | L | 3 | n/a |
+| Responsivness | H | 2 | 2 |
+| Styling | H | 2 | 4 |
+| Backend/Frontend connectivity | H | 3 | 5 |
+| Total | H | 29 | 42.5 |
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Hurdles
 
-### `yarn eject`
+One of the major hurdles our team overcame was integrating our user schema with our front-end interface. In particular we struggled to obtain and save the user's expense items and their amount to our backend database. This was resolved by creating useState's for both the item and it's cost and then applying those states to the appropriate keys within the schema. In hindsight it appears obvious but it was difficult to envision beforehand.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Towards the end of the first week we realized we did not delegate tasks as effectively as we could have. We probably could have accomplished more in less time had we done more solo/pair-programming.
