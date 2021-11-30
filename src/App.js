@@ -18,7 +18,7 @@ function App() {
   })
 
   return (
-    <div>
+    <div className="page">
       <Header
         selectUser={selectUser}
         setSelectUser={setSelectUser}
