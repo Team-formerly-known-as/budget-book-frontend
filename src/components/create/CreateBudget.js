@@ -1,4 +1,3 @@
-import ButtonFooter from './ButtonFooter'
 import Expense from './Expense'
 
 function CreateBudget(props) {
@@ -12,7 +11,6 @@ function CreateBudget(props) {
       <p className="userName">User: {props.user.userName}</p>
 
       <Expense user={props.user} setUser={props.setUser} />
-      <ButtonFooter />
     </div>
   )
 }

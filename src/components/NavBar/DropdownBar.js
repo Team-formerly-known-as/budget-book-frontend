@@ -3,6 +3,7 @@ import { useEffect } from 'react'
 function DropdownBar(props) {
   function MakeAPICall() {
     fetch('https://hidden-taiga-41169.herokuapp.com/user')
+    // fetch("https://localhost:3000/user")
       .then((res) => res.json())
       .then((data) => props.setSelectUser(data.user))
   }

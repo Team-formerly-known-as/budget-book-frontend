@@ -4,6 +4,9 @@ function Expense(props) {
   const [expenseName, setExpenseName] = useState('')
   const [expenseAmount, setExpenseAmount] = useState('')
   const [expenseId, setExpenseId] = useState(0)
+  const [isClicked, setIsClicked] = useState(false)
+
+
 
   function handleChangeItem(event) {
     const input = event.target.value
@@ -20,29 +23,34 @@ function Expense(props) {
 
     fetch(
       `https://hidden-taiga-41169.herokuapp.com/expense/${props.user._id}`,
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          detail: expenseName,
-          amount: expenseAmount,
-          user: props.user._id,
-        }),
-      },
-    )
-      .then((res) => res.json())
-      .then((user) => props.setUser(user))
-      .then((user) => {
-        setExpenseName('')
-        setExpenseAmount('')
-      })
+    // fetch(
+			// `https://localhost:3000/expense/${props.user._id}`,
+
+			{
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({
+					detail: expenseName,
+					amount: expenseAmount,
+					user: props.user._id,
+				}),
+			}
+		)
+			.then((res) => res.json())
+			.then((user) => props.setUser(user))
+			.then((user) => {
+				setExpenseName('');
+				setExpenseAmount('');
+			});
   }
 
   function handleDelete(deletedId) {
     fetch(
       `https://hidden-taiga-41169.herokuapp.com/expense/${deletedId}/${props.user._id}`,
+    // fetch(`https://localhost4000/expense/${deletedId}/${props.user._id}`,
+
       {
         method: 'DELETE',
       },
@@ -61,6 +69,7 @@ function Expense(props) {
   function handleUpdate() {
     fetch(
       `https://hidden-taiga-41169.herokuapp.com/user/${expenseId}/${props.user._id}`,
+    // fetch(`https://localhost4000/user/${expenseId}/${props.user._id}`,
       {
         method: 'PUT',
         headers: {
@@ -87,7 +96,8 @@ function Expense(props) {
         <button
           className="secondaryButton"
           onClick={() => {
-            setUpdate(lineItem)
+            setUpdate(lineItem) 
+            setIsClicked(true)
           }}
         >
           Edit
@@ -114,7 +124,7 @@ function Expense(props) {
         {' '}
         Remaining Balance: ${props.user.remainder}
       </p>
-      <div id="edit-field">
+      {isClicked && <div id="edit-field">
         <h2 className="editTab">Edit</h2>
         <input value={expenseName} type="text" onChange={handleChangeItem} />
         <input
@@ -122,10 +132,13 @@ function Expense(props) {
           type="number"
           onChange={handleChangeAmount}
         />
-        <button className="primaryButton" onClick={handleUpdate} type="submit">
+        <button className="primaryButton" onClick={() => {
+          handleUpdate()
+          setIsClicked(false)}}
+          type="submit">
           Submit
         </button>
-      </div>
+      </div>}
       <div className="expense-input-box">
         <h2 className="expenseAdd">Add Expense</h2>
         <input

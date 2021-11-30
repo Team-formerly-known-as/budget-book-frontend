@@ -22,7 +22,7 @@ function Intro(props) {
   const handleSubmit = (event) => {
     event.preventDefault()
     fetch('https://hidden-taiga-41169.herokuapp.com/user', {
-      // fetch("https://localhost4000/user", {
+      // fetch("https://localhost:3000/user", {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
