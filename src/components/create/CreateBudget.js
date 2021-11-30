@@ -1,18 +1,11 @@
-import ButtonFooter from './ButtonFooter'
 import Expense from './Expense'
 
 function CreateBudget(props) {
-  const handleChange = (e) => {
-    console.log(e.target.value)
-  }
 
   return (
     <div className="expense-box">
-      <h2>Budget</h2>
-      <p className="userName">User: {props.user.userName}</p>
-
+		<h1 className="expenseAdd"> my budget </h1>
       <Expense user={props.user} setUser={props.setUser} />
-      <ButtonFooter />
     </div>
   )
 }

@@ -3,6 +3,7 @@ import { useEffect } from 'react'
 function DropdownBar(props) {
   function MakeAPICall() {
     fetch('https://hidden-taiga-41169.herokuapp.com/user')
+    // fetch("https://localhost:3000/user")
       .then((res) => res.json())
       .then((data) => props.setSelectUser(data.user))
   }
@@ -18,9 +19,9 @@ function DropdownBar(props) {
   }
 
   return (
-    <div className="Wrapper">
-      <div className="title">
-        <select onChange={handleUserChange}>
+    <div className="drop-wrapper">
+      <div className="drop-title">
+        <select className="dropdown" onChange={handleUserChange}>
           <option value="select user"> -- Select User --</option>
           {props.selectUser.map((user) => (
             <option key={user._id} value={JSON.stringify(user)}>
