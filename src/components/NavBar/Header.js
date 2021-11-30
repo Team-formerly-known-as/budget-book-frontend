@@ -1,6 +1,5 @@
 import DropdownBar from './DropdownBar';
 import { Link } from 'react-router-dom'
-import Team from './Team';
 
 function Header(props) {
   return (

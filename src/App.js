@@ -7,7 +7,7 @@ import 'react-bootstrap'
 import Header from './components/NavBar/Header'
 import Intro from './components/Intro'
 import CreateBudget from './components/create/CreateBudget'
-import Team from './components/NavBar/Team'
+import Team from './components/Team'
 
 function App() {
   const [selectUser, setSelectUser] = useState([])
@@ -31,7 +31,10 @@ function App() {
           path="/create"
           element={<CreateBudget user={user} setUser={setUser} />}
         />
-        <Route path='/team' element={<Team/>}/>
+        <Route 
+          path='/team'
+          element={<Team/>}
+        />
       </Routes>
     </div>
   )
